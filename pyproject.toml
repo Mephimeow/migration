@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dbmigrate"
+version = "0.1.0"
+description = "Database migration toolkit for Python"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your@email.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = []
+
+[project.optional-dependencies]
+postgres = ["psycopg>=3.1"]
+mysql = ["mysql-connector-python>=8.0"]
+sqlite = []
+all-db = ["psycopg>=3.1", "mysql-connector-python>=8.0"]
+dev = ["pytest>=7.0", "pytest-cov>=4.0", "ruff>=0.1"]
+
+[project.scripts]
+dbmigrate = "migrate.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yourname/dbmigrate"
+Repository = "https://github.com/yourname/dbmigrate"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["migrate_pkg*", "migrate*"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

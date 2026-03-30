@@ -1,0 +1,6 @@
+[migration]
+directory = "migrations"
+database = "sqlite:///app.db"
+
+[logging]
+level = "INFO"
